@@ -12,8 +12,7 @@ public class Hello {
     }
 }
 
-class UserDB { //connect to DB
-    public String getNameById(int id) {
-        throw new RuntimeException("TODO");
-    }
+interface UserDB {
+    public String getNameById(int id) throws UserNotFoundException;
 }
+
