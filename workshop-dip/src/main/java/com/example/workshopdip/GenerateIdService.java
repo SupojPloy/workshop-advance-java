@@ -9,7 +9,7 @@ public class GenerateIdService {
 
     private Random random = new Random();
 
-    public void setRandom(Random radom) {
+    public void setRandom(Random random) {
         this.random = random;
     }
 
