@@ -3,21 +3,25 @@ package solid;
 public class DemoBank {
     public static void main(String[] args) {
 
-        LocalBank localBank = new LocalBank();
+        TransferMoney localBank = new LocalBank();
         localBank.transferMoney(1000);
 
-        InterBank interBank = new InterBank();
+        TransferMoney interBank = new InterBank();
         interBank.transferMoney(2000);
     }
 }
 
-class LocalBank {
+interface TransferMoney {
+    public void transferMoney(int money);
+}
+
+class LocalBank implements TransferMoney {
     public void transferMoney(int money) {
         System.out.println("Transfer money in Thailand only");
     }
 }
 
-class InterBank extends LocalBank {
+class InterBank implements TransferMoney {
     public void transferMoney(int money) {
         System.out.println("Transfer money (International)");
     }
