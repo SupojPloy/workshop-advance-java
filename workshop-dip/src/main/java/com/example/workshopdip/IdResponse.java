@@ -3,6 +3,9 @@ package com.example.workshopdip;
 public class IdResponse {
     private String result;
 
+    public IdResponse() {
+    }
+
     public IdResponse(String result) {
         this.result = result;
     }
