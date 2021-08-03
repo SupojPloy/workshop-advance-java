@@ -17,6 +17,33 @@ class GenerateIdServiceTest {
         String id = service.get();
         assertEquals("XYZ7", id);
     }
+
+    @Test
+    @DisplayName("Demo Spay Random :: Called nextInt()")
+    public void case02() {
+        SpyRandom spyRandom = new SpyRandom();
+        GenerateIdService service = new GenerateIdService();
+        service.setRandom(spyRandom);
+        service.get();
+        spyRandom.verify(1);
+    }
+}
+
+class SpyRandom extends Random {
+
+    private int counter;
+
+    @Override
+    public int nextInt(int bound) {
+        this.counter++;
+        return 77;
+    }
+
+    public void verify(int expectedResult) {
+        if (this.counter != expectedResult) {
+            fail("จำนวนการเรียกใช้งาน method nextInt() ไม่ถูกต้อง");
+        }
+    }
 }
 
 class StubRandom extends Random {
